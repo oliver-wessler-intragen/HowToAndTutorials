@@ -9,13 +9,13 @@ The examples will show how to start debugging the `qer-app-portal` application w
 ### Cloned repository
 After setting up VSCode and cloning the Angular portal repository, the folder `IdentityManager.Imx` should be open in VSCode, with the folder `imxweb` inside it:
 
-![VSCode Explorer View of the Angular portal repository](images\opened_folder.png)
+![VSCode Explorer View of the Angular portal repository](./images/opened_folder.png)
 
 ### Creating launch configurations
 To enable debugging, copy the file `IdentityManager.Imx\imxweb\.vscode\launch.json` to `IdentityManager.Imx\.vscode\launch.json`.
 This file contains different launch configurations that can be used for debugging. You can either use one of the included configurations or add your own.
 
-![VSCode Explorer View of the Angular portal repository folder with an arrow that indicates the copied "launch.json" file](images\copy_launch_json.png)
+![VSCode Explorer View of the Angular portal repository folder with an arrow that indicates the copied "launch.json" file](./images/copy_launch_json.png)
 
 > **Why do you need to copy this file?**
 >
@@ -40,8 +40,8 @@ Firefox debug support can be added with the extension `Debugger for Firefox`, cr
 
 3. Switch to the `Run and Debug` view in VSCode. The dropdown at the top offers all start configurations that are defined in the `launch.json` file.
 
-![VSCode "Run and Debug" view showing the available runc configurations](images/debug_view_with_available_configs.PNG)
+![VSCode "Run and Debug" view showing the available runc configurations](./images/debug_view_with_available_configs.PNG)
 
 Select `QER App Portal (Firefox)` and click the green triangle next to the dropdown to start debugging. This will open a new Firefox window and load the Angular Portal start page from the local imxclient. The address bar will be highlighted and showing a robot symbol if the debugger has been connected correctly to the browser.
 
-![Firefox browser with Angular portal login page, the address bar is highlighted to show that the browser is running in debug mode](images/firefox_debug_session.PNG)
+![Firefox browser with Angular portal login page, the address bar is highlighted to show that the browser is running in debug mode](./images/firefox_debug_session.PNG)
