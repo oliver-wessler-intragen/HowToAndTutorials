@@ -148,3 +148,5 @@ To do this, open a source file after you have started a debugging session and ad
 If you click `Yes` in the message box, the path mapping will be added to the debug configuration.
 
 ![alt text](./images/debug_config_new_path_mapping.png)
+
+After adding the path mapping, you need to restart the debug session.
