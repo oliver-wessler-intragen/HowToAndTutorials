@@ -1,6 +1,6 @@
 # Request Parameter samples
 
-Code samples, explanations, and tricks for reqeuest parameters for the Angular portal.
+Code samples, explanations, and tricks for request parameters for the Angular portal.
 
 ## dynamically_activated_params.vb
 
