@@ -1,8 +1,12 @@
 # How to set up and use the dev tools for the Angular Portal
 
 > This guide contains instructions for versions 9.2.x and 9.3.x of One Identity Manager.
+>
 > The commands and specific versions of tools and dependencies are known to work for these versions of OneIM. Later versions may work as well.
+>
 > This guide is NOT a tutorial for git, node or any other development tools. Basic knowledge of git, node and usage of a terminal are assumed.
+>
+> The instructions use Windows file path conventions and assume that IIS is used as a web server.
 
 ## Installation of required tools
 Download and install the following tools
@@ -118,7 +122,7 @@ After a change has been made, tested, debugged and everything works, follow thes
 - on a terminal, navigate to `.\imxweb` inside the repository directory
 - run the command:  `npm run build:app qer-app-portal`
 - open the directory `.\imxweb\dist\qer-app-portal` in a file browser
-- select all files inside the directory and add them to a zip archive (Important: Select the files inside the directory! Do not zip the directory itself!)
+- select all files inside the directory and add them to a zip archive (**<font color="red">Important: Select the files inside the directory! Do not zip the directory itself!</font>**)
 - rename the zip archive to `html_qer-app-portal.zip`
 - got to the ApiServer web application's directory inside the IIS web server directory and navigate to the subdirectory `.\bin\imxeb\custom` (default path: `C:\inetpub\wwwroot\ApiServer\bin\imxweb\custom`)
 -- if the `custom` subdirectory does not exist, create it
