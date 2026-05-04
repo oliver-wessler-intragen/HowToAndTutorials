@@ -43,7 +43,7 @@ After cloning, the repository should be contained in a directory `IdentityManage
 # Prepare the local repository
 
 ## Install dependencies
-Inside a terminal, navigate to the folder `.\imxweb` inside your repository directory. Use the node package manager to install all required project dependencies:
+Inside a terminal, navigate to the directory `.\imxweb` inside your repository directory. Use the node package manager to install all required project dependencies:
 
 - OneIM 9.2.x: `npm install`
 - OneIM 9.3.x: `npm install --skip-dialog`
@@ -98,7 +98,7 @@ The last message in the terminal says `Press ENTER to continue`. This will actua
 ## Start the modified Angular portal from your local repository
 > All changed modules and applications need to be compiled before you start the Angular portal on the local ApiServer.
 
-In a terminal, navigate to `.\imxweb` inside your repository folder and execute the command `npm run start qer-app-portal`.
+In a terminal, navigate to `.\imxweb` inside your repository directory and execute the command `npm run start qer-app-portal`.
 
 Wait until the start script is finished, indicated by a message that says that the local server is reachable at `http://localhost:4200`.
 
@@ -113,3 +113,35 @@ If you want to debug specific pieces of code, check the [debugging guide](../Deb
 # Deploying changes
 After a change has been made, tested, debugged and everything works, follow these steps to deploy the change to a OneIM environment:
 
+## Create a deployable application archive and deploy it in the development environment
+
+- on a terminal, navigate to `.\imxweb` inside the repository directory
+- run the command:  `npm run build:app qer-app-portal`
+- open the directory `.\imxweb\dist\qer-app-portal` in a file browser
+- select all files inside the directory and add them to a zip archive (Important: Select the files inside the directory! Do not zip the directory itself!)
+- rename the zip archive to `html_qer-app-portal.zip`
+- got to the ApiServer web application's directory inside the IIS web server directory and navigate to the subdirectory `.\bin\imxeb\custom` (default path: `C:\inetpub\wwwroot\ApiServer\bin\imxweb\custom`)
+-- if the `custom` subdirectory does not exist, create it
+- copy the file `html_qer-app-portal.zip` into the directory `custom` (on a default installation, it should then be located at `C:\inetpub\wwwroot\ApiServer\bin\imxweb\custom\html_qer-app-portal.zip`)
+- restart the IIS web server
+- verify the successful deployment by opening the Angular portal in a browser (from the IIS web server, not the imxclient debugging session at localhost:4200)
+
+## Upload the application archive to the One Identity Manager database
+The changes have now been deployed to a single web server. To distribute them to other web servers in the same environment and prepare them for transport to other environments, follow these steps:
+
+- start the tool `Software Loader`
+- select the option `Import into database`
+- on the screen `Select the root directory`, navigate to the ApiServer web application directory (default: `C:\inetpub\wwwroot\ApiServer`)
+- in the file structure tree, navigate to `.\bin\imxweb\custom` and select the file `html_qer-app-portal.zip`
+- on the screen `Assign machine roles`, select the role `Server\Web\Business API Server`
+- assign a change label
+- finish the upload process
+
+If there are more than one web server in your development environment, these web servers will update the Angular portal by:
+
+- automatic update (if enabled)
+- manual restart of the IIS service (if automatic update is disabled or you want to immediately)
+
+## Transport the application archive to other environments
+
+The change label that was assigned in the previous step can be handled like any other transport file. Use the tool `Database Transporter` or another deployment method to transport the change label from the development environment to other environments.
